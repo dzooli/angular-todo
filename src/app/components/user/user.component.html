@@ -1,1 +1,6 @@
-<p>user works!</p>
+<div>
+  <button>
+    <img [src]="'users/' + selectedUser.avatar" [alt]="selectedUser.name" [title]="selectedUser.name" /> <!-- property binding, differs from attribute binding, where no DOM property is present and needs [attr.somethin] syntax -->
+    <span>{{ selectedUser.name }}</span> <!-- string interpolation -->
+  </button>
+</div>
