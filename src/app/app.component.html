@@ -1,18 +1,18 @@
-<main class="main">
-  <div class="content">
-    <header>
-      <app-header />
-      <section>
-        <h2>{{ title }}</h2>
-        <p>Congratulations! Your app is running. 🎉</p>
-      </section>
-    </header>
-  </div>
-</main>
+<header>
+  <app-header />
+  <h2>{{ title }}</h2>
+</header>
 
-<section>
-  <div class="content">The main content of the Application Component goes here.</div>
-</section>
+<main>
+  <ul id="users">
+    <li>
+      <app-user />
+    </li>
+    <li>
+      <app-user />
+    </li>
+  </ul>
+</main>
 <section>
   <p>And here is the router outlet:</p>
   <router-outlet />
