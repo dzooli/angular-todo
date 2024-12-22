@@ -10,11 +10,7 @@ import { User } from '../../models/user.interface';
   styleUrl: './user.component.css',
 })
 export class UserComponent implements OnInit {
-  selectedUser?: User = {
-    avatar: '',
-    name: '',
-    id: '',
-  };
+  selectedUser?: User = undefined;
   private randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
 
   get imagePath() {
