@@ -1,6 +1,15 @@
 <div>
-  <button>
-    <img [src]="'users/' + selectedUser.avatar" [alt]="selectedUser.name" [title]="selectedUser.name" /> <!-- property binding, differs from attribute binding, where no DOM property is present and needs [attr.somethin] syntax -->
-    <span>{{ selectedUser.name }}</span> <!-- string interpolation -->
+  <button
+    type="button"
+    [id]="'btn_user_' + userId"
+    [attr.data-userid]="userId"
+    (click)="onSelectUser($event)"
+  >
+    <!-- property binding, differs from attribute binding, where no DOM property is present and needs [attr.somethin] syntax -->
+    <img [src]="imagePath" [alt]="userName" [title]="userName" />
+    <!-- string interpolation -->
+    <span [id]="'span_user_' + userId" [attr.data-userid]="userId">{{
+      userName
+    }}</span>
   </button>
 </div>
