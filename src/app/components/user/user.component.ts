@@ -25,16 +25,15 @@ export class UserComponent implements OnInit {
     return this.selectedUser?.id;
   }
 
-  onSelectUser(e: Event) {
-    let button = <HTMLButtonElement>e.target;
-    console.log('Clicked!', button.id, button.getAttribute('data-userid'));
-    this.selectedUser = DUMMY_USERS.find(
-      (user) => user.id == button.getAttribute('data-userid')
-    );
-    console.info('The selected user is: ', this.selectedUser);
-  }
-
   ngOnInit(): void {
     this.selectedUser = DUMMY_USERS[this.randomIndex];
+  }
+
+  onSelectUser(e: Event) {
+    let button = <HTMLButtonElement>e.target;
+    let userid = button.getAttribute('data-userid');
+    console.log('Clicked!', button.id, userid);
+    this.selectedUser = DUMMY_USERS.find((user) => user.id == userid);
+    console.info('The selected user is: ', this.selectedUser);
   }
 }
