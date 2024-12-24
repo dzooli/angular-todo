@@ -30,9 +30,7 @@ export class UserComponent implements OnInit {
   }
 
   onSelectUser(e: Event) {
-    let button = <HTMLButtonElement>e.target;
-    let userid = button.getAttribute('data-userid');
-    console.log('Clicked!', button.id, userid);
+    let userid = (<HTMLButtonElement>e.target)?.getAttribute('data-userid');
     this.selectedUser = DUMMY_USERS.find((user) => user.id == userid);
     console.info('The selected user is: ', this.selectedUser);
   }
