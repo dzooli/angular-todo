@@ -10,7 +10,8 @@
     <img [src]="imagePath" [alt]="userName" [title]="userName" />
     <!-- string interpolation -->
     <span [id]="'span_user_' + userId" [attr.data-userid]="userId">{{
-      userName
+      selectedUser().name
     }}</span>
+    <!-- signal value needs to be called to get the value. example: in span<> -->
   </button>
 </div>
