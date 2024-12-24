@@ -1,6 +1,5 @@
-import { Component, OnInit, signal, computed } from '@angular/core';
+import { Component, OnInit, computed, Input, signal } from '@angular/core';
 import { DUMMY_USERS } from '../../dunmmy-users';
-import { User } from '../../models/user.interface';
 
 @Component({
   selector: 'app-user',
@@ -10,23 +9,17 @@ import { User } from '../../models/user.interface';
   styleUrl: './user.component.css',
 })
 export class UserComponent implements OnInit {
-  /*
-   * This component uses Signal mechanism which is a bit simpler, introduced in Angular 16
-   * but not all components are compatible with it.
-   * Use Signals when possible but be prepared to the old-style event handlers too.
-   */
-  userId = computed(() => this.selectedUser()?.id);
-  userName = computed(() =>
-    this.selectedUser() ? this.selectedUser()?.name : ''
-  );
-  imagePath = computed(() => 'users/' + this.selectedUser()?.avatar);
+  @Input() avatar!: string;
+  @Input() id!: string;
+  @Input() name!: string;
 
-  selectedUser = signal(<User>DUMMY_USERS[0]);
-  private randomIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+  selectedUser = signal(DUMMY_USERS[0]);
 
-  ngOnInit(): void {
-    this.selectedUser.set(DUMMY_USERS[this.randomIndex]);
+  get imagePath() {
+    return 'users/' + this.avatar;
   }
+
+  ngOnInit(): void {}
 
   onSelectUser(e: Event) {
     let userid = (<HTMLButtonElement>e.target)?.getAttribute('data-userid');

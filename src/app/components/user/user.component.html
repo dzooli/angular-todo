@@ -1,17 +1,15 @@
 <div>
   <button
     type="button"
-    [id]="'btn_user_' + userId()"
+    [id]="'btn_user_' + id"
     data-testid="btn_user"
-    [attr.data-userid]="userId()"
+    [attr.data-userid]="id"
     (click)="onSelectUser($event)"
   >
     <!-- property binding, differs from attribute binding, where no DOM property is present and needs [attr.somethin] syntax -->
-    <img [src]="imagePath()" [alt]="userName()" [title]="userName()" />
+    <img [src]="imagePath" [alt]="name" [title]="name" />
     <!-- string interpolation -->
-    <span [id]="'span_user_' + userId()" [attr.data-userid]="userId()">{{
-      selectedUser().name
-    }}</span>
+    <span [id]="'span_user_' + id" [attr.data-userid]="id">{{ name }}</span>
     <!-- signal value needs to be called to get the value. see the example: in span<>'s value' -->
   </button>
 </div>
