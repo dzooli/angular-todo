@@ -1,13 +1,18 @@
 <div>
   <button
     type="button"
-    [id]="'btn_user_' + id"
+    [id]="'btn_user_' + id()"
     data-testid="btn_user"
-    [attr.data-userid]="id"
+    [attr.data-userid]="id()"
     (click)="onSelectUser($event)"
   >
     <!-- property binding, differs from attribute binding, where no DOM property is present and needs [attr.somethin] syntax -->
-    <img [src]="imagePath" [alt]="name()" [title]="name()" />
+    <img
+      [src]="imagePath()"
+      [alt]="name()"
+      [title]="name()"
+      [attr.data-userid]="id()"
+    />
     <!-- string interpolation -->
     <span [id]="'span_user_' + id()" [attr.data-userid]="id()">{{
       name()

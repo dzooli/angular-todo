@@ -1,4 +1,11 @@
-import { Component, OnInit, Input, signal, input } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  signal,
+  input,
+  computed,
+} from '@angular/core';
 import { DUMMY_USERS } from '../../dunmmy-users';
 
 @Component({
@@ -12,6 +19,8 @@ export class UserComponent implements OnInit {
   // @Input({ required: true }) avatar!: string;
   // @Input({ required: true }) id!: string;
   // @Input({ required: true }) name!: string;
+
+  /* Alternative input definition using input function from Angular. A bit cleaner code. */
   avatar = input.required<string>();
   id = input.required<string>();
   name = input.required<string>();
@@ -22,9 +31,14 @@ export class UserComponent implements OnInit {
    as a getter. this property is usable without
    calling the function (like a property as usual)
   */
-  get imagePath() {
+  // get imagePath() {
+  //   return 'users/' + this.avatar();
+  // }
+
+  /* Using computed values */
+  imagePath = computed(() => {
     return 'users/' + this.avatar();
-  }
+  });
 
   ngOnInit(): void {}
 
