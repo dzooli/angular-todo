@@ -7,9 +7,11 @@
     (click)="onSelectUser($event)"
   >
     <!-- property binding, differs from attribute binding, where no DOM property is present and needs [attr.somethin] syntax -->
-    <img [src]="imagePath" [alt]="name" [title]="name" />
+    <img [src]="imagePath" [alt]="name()" [title]="name()" />
     <!-- string interpolation -->
-    <span [id]="'span_user_' + id" [attr.data-userid]="id">{{ name }}</span>
+    <span [id]="'span_user_' + id()" [attr.data-userid]="id()">{{
+      name()
+    }}</span>
     <!-- signal value needs to be called to get the value. see the example: in span<>'s value' -->
   </button>
 </div>

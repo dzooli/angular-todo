@@ -1,4 +1,4 @@
-import { Component, OnInit, computed, Input, signal } from '@angular/core';
+import { Component, OnInit, Input, signal, input } from '@angular/core';
 import { DUMMY_USERS } from '../../dunmmy-users';
 
 @Component({
@@ -9,21 +9,30 @@ import { DUMMY_USERS } from '../../dunmmy-users';
   styleUrl: './user.component.css',
 })
 export class UserComponent implements OnInit {
-  @Input() avatar!: string;
-  @Input() id!: string;
-  @Input() name!: string;
+  // @Input({ required: true }) avatar!: string;
+  // @Input({ required: true }) id!: string;
+  // @Input({ required: true }) name!: string;
+  avatar = input.required<string>();
+  id = input.required<string>();
+  name = input.required<string>();
 
   selectedUser = signal(DUMMY_USERS[0]);
 
+  /*
+   as a getter. this property is usable without
+   calling the function (like a property as usual)
+  */
   get imagePath() {
-    return 'users/' + this.avatar;
+    return 'users/' + this.avatar();
   }
 
   ngOnInit(): void {}
 
   onSelectUser(e: Event) {
     let userid = (<HTMLButtonElement>e.target)?.getAttribute('data-userid');
+    console.info('Looking for user id:', userid, 'type:', typeof userid);
     let foundUser = DUMMY_USERS.find((user) => user.id == userid);
+    console.info('Found user:', foundUser);
     this.selectedUser.set(foundUser ? foundUser : DUMMY_USERS[0]);
     console.info('The selected user is: ', this.selectedUser());
   }
