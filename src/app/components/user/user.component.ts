@@ -5,6 +5,8 @@ import {
   signal,
   input,
   computed,
+  Output,
+  EventEmitter,
 } from '@angular/core';
 import { DUMMY_USERS } from '../../dunmmy-users';
 
@@ -19,6 +21,7 @@ export class UserComponent implements OnInit {
   @Input({ required: true }) avatar!: string;
   @Input({ required: true }) id!: string;
   @Input({ required: true }) name!: string;
+  @Output() select = new EventEmitter();
 
   /* Alternative input definition using input function from Angular. A bit cleaner code. */
 
@@ -50,5 +53,7 @@ export class UserComponent implements OnInit {
     console.info('Found user:', foundUser);
     this.selectedUser.set(foundUser ? foundUser : DUMMY_USERS[0]);
     console.info('The selected user is: ', this.selectedUser());
+
+    this.select.emit(this.selectedUser().id);
   }
 }

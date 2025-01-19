@@ -13,4 +13,8 @@ import { DUMMY_USERS } from './dunmmy-users';
 export class AppComponent {
   title = 'Enterprise ToDo List';
   users = DUMMY_USERS;
+
+  onSelectUser(id: string) {
+    console.log('Selected user:', id);
+  }
 }
