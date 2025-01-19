@@ -5,6 +5,7 @@ import {
   signal,
   input,
   computed,
+  output,
   Output,
   EventEmitter,
 } from '@angular/core';
@@ -21,13 +22,16 @@ export class UserComponent implements OnInit {
   @Input({ required: true }) avatar!: string;
   @Input({ required: true }) id!: string;
   @Input({ required: true }) name!: string;
-  @Output() select = new EventEmitter();
-
   /* Alternative input definition using input function from Angular. A bit cleaner code. */
-
   // avatar = input.required<string>();
   // id = input.required<string>();
   // name = input.required<string>();
+
+  // @Output() select = new EventEmitter<string>();
+  // Alternative and more future-proof approach is using the output function. Creates a custom event we can emit.
+  // We do not need to use Output decoreators anymore and the cration of EventEmitter is
+  // also unnecessary with this possiblity.
+  select = output<string>();
 
   selectedUser = signal(DUMMY_USERS[0]);
 
@@ -38,7 +42,6 @@ export class UserComponent implements OnInit {
   get imagePath() {
     return 'users/' + this.avatar;
   }
-
   /* Using computed values */
   // imagePath = computed(() => {
   //   return 'users/' + this.avatar();
@@ -48,11 +51,8 @@ export class UserComponent implements OnInit {
 
   onSelectUser(e: Event) {
     let userid = (<HTMLButtonElement>e.target)?.getAttribute('data-userid');
-    console.info('Looking for user id:', userid, 'type:', typeof userid);
     let foundUser = DUMMY_USERS.find((user) => user.id == userid);
-    console.info('Found user:', foundUser);
     this.selectedUser.set(foundUser ? foundUser : DUMMY_USERS[0]);
-    console.info('The selected user is: ', this.selectedUser());
 
     this.select.emit(this.selectedUser().id);
   }
