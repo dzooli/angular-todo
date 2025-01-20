@@ -19,9 +19,12 @@ import { DUMMY_USERS } from '../../dunmmy-users';
   styleUrl: './user.component.css',
 })
 export class UserComponent implements OnInit {
-  @Input({ required: true }) avatar!: string;
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) name!: string;
+  // ! means, this will never be undefined (TypeScript)
+  @Input({ required: true }) user!: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
   /* Alternative input definition using input function from Angular. A bit cleaner code. */
   // avatar = input.required<string>();
   // id = input.required<string>();
@@ -40,7 +43,7 @@ export class UserComponent implements OnInit {
    calling the function (like a property as usual)
   */
   get imagePath() {
-    return 'users/' + this.avatar;
+    return 'users/' + this.user.avatar;
   }
   /* Using computed values */
   // imagePath = computed(() => {

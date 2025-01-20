@@ -8,7 +8,7 @@ import { DUMMY_USERS } from '../../dunmmy-users';
   styleUrl: './tasks.component.css',
 })
 export class TasksComponent {
-  @Input({ required: true }) name!: string;
+  @Input() name?: string;
 
   onSelectUser(id: string) {}
 }
