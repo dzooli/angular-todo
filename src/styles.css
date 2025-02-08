@@ -168,7 +168,7 @@ main {
 }
 
 header {
-  justify-items: center;
+  /* justify-items: center; */
   text-align: center;
   font-size: smaller;
 }
