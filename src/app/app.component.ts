@@ -14,7 +14,7 @@ import { TasksComponent } from './components/tasks/tasks.component';
 export class AppComponent {
   title = 'Enterprise ToDo List';
   users = DUMMY_USERS;
-  selectedUserId: string = 'u1';
+  selectedUserId?: string;
 
   get selectedUser() {
     return this.users.find((user) => user.id == this.selectedUserId);

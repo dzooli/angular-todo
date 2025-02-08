@@ -12,7 +12,13 @@
     }
   </ul>
   <div>
-    <app-tasks [name]="selectedUser?.name" />
+    @if (selectedUser) {
+    <app-tasks [name]="selectedUser.name" />
+    } @else {
+    <p data-testid="fallback_tasklist" class="fallback_tasklist">
+      Please select an user to see the tasks.
+    </p>
+    }
   </div>
 </main>
 <section>
