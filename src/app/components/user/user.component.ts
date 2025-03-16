@@ -11,10 +11,11 @@ import {
 } from '@angular/core';
 import { DUMMY_USERS } from '../../dunmmy-users';
 import { type User } from '../../models/user.interface';
+import { CardComponent } from '../shared/card/card.component';
 
 @Component({
   selector: 'app-user',
-  imports: [],
+  imports: [CardComponent],
   standalone: true,
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
