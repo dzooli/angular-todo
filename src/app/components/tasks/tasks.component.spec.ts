@@ -17,7 +17,7 @@ describe('TasksComponent', () => {
     };
 
     await TestBed.configureTestingModule({
-      declarations: [TasksComponent, TaskComponent, NewTaskComponent],
+      imports: [TasksComponent, TaskComponent, NewTaskComponent],
       providers: [{ provide: TasksService, useValue: tasksServiceStub }],
     }).compileComponents();
   });
