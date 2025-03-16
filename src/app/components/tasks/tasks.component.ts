@@ -3,6 +3,7 @@ import { DUMMY_USERS } from '../../dunmmy-users';
 
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from './new-task/new-task.component';
+import { NewTask } from '../../models/new-task';
 
 @Component({
   selector: 'app-tasks',
@@ -58,6 +59,18 @@ export class TasksComponent {
   }
 
   onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
+  onAddTask(taskData: NewTask) {
+    this.tasks.unshift({
+      id: Math.random().toString(),
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date,
+      completed: false,
+    });
     this.isAddingTask = false;
   }
 }
