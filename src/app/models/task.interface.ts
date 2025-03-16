@@ -3,6 +3,5 @@ export interface Task {
   userId: string;
   title: string;
   summary: string;
-  completed: boolean;
   dueDate: string;
 }
