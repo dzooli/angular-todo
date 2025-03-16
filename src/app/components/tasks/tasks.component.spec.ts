@@ -40,12 +40,6 @@ describe('TasksComponent', () => {
     expect(tasksServiceStub.getUserTasks).toHaveBeenCalledWith('1');
   });
 
-  it('should call removeTask on complete task', () => {
-    spyOn(tasksServiceStub as any, 'removeTask');
-    component.onCompleteTask('task1');
-    expect(tasksServiceStub.removeTask).toHaveBeenCalledWith('task1');
-  });
-
   it('should set isAddingTask to true on start add task', () => {
     component.onStartAddTask();
     expect(component.isAddingTask).toBeTrue();
