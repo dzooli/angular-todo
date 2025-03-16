@@ -3,6 +3,7 @@
     type="button"
     [id]="'btn_user_' + user.id"
     data-testid="btn_user"
+    [class.active]="selected"
     [attr.data-userid]="user.id"
     (click)="onSelectUser($event)"
   >

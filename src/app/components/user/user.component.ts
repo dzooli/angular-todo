@@ -10,7 +10,7 @@ import {
   EventEmitter,
 } from '@angular/core';
 import { DUMMY_USERS } from '../../dunmmy-users';
-import { User } from '../../models/user.interface';
+import { type User } from '../../models/user.interface';
 
 @Component({
   selector: 'app-user',
@@ -22,6 +22,7 @@ import { User } from '../../models/user.interface';
 export class UserComponent implements OnInit {
   // ! means, this will never be undefined (TypeScript)
   @Input({ required: true }) user!: User;
+  @Input({ required: true }) selected: boolean = false;
   /* Alternative input definition using input function from Angular. A bit cleaner code. */
   // avatar = input.required<string>();
   // id = input.required<string>();
