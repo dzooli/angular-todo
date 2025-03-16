@@ -30,7 +30,11 @@ export class TasksService {
     },
   ];
 
-  constructor() {}
+  constructor() {
+    this.tasks = localStorage.getItem('tasks')
+      ? (JSON.parse(localStorage.getItem('tasks') || '') as Task[])
+      : this.tasks;
+  }
 
   getTasks(): Task[] {
     return this.tasks;
@@ -58,11 +62,17 @@ export class TasksService {
       summary: taskData.summary,
       dueDate: taskData.date,
     });
+    this.saveTasks();
     return this.tasks[0];
   }
 
   removeTask(id: string) {
     this.tasks = this.tasks.filter((t) => t.id !== id);
+    this.saveTasks();
     return undefined;
+  }
+
+  private saveTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
   }
 }
