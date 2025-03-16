@@ -21,7 +21,6 @@ export class AppComponent {
   }
 
   onSelectUser(id: string) {
-    console.log('Event received, selected user:', id);
     this.selectedUserId = id;
   }
 }
